@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+<meta name="author" content="Ruowen Wang" />
+
+
+<title>PM566 Final Project</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">PM566 Final Project</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li>
+  <a href="index.html">Download Report</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="https://github.com/USCbiostats/PM566">
+    <span class="fa fa-github fa-lg"></span>
+     
+  </a>
+</li>
+<li>
+  <a href="https://elastic-khorana-70231e.netlify.app/">PM566 Home</a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">PM566 Final Project</h1>
+<h4 class="author">Ruowen Wang</h4>
+
+</div>
+
+
+<p>This is my PM566 Final Project website.</p>
+<div id="introduction" class="section level1">
+<h1>Introduction:</h1>
+<ol style="list-style-type: decimal">
+<li><p>Question: I am trying to find the association between the social distance index with the incidence rate of COVID-19. To check whether keeping social distance is an effective way to slow down the spread of COVID-19.</p></li>
+<li><p>Explanation: The social distance index is an integer from 0~100 that represents the extent residents and visitors are practicing social distancing. “0” indicates no social distancing is observed in the community, while “100” indicates all residents are staying at home and no visitors are entering the county.Calculated by MTI.</p></li>
+</ol>
+</div>
+<div id="methods" class="section level1">
+<h1>Methods:</h1>
+<ol style="list-style-type: decimal">
+<li><p>Data source: Social distance index: <a href="https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/ZAKKCE" class="uri">https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/ZAKKCE</a> Total US confirmed cases: <a href="https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/HIDLTK" class="uri">https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/HIDLTK</a></p></li>
+<li><p>Firstly, I check the number of columns and rows of both data sets. Then I delete the extra columns and rows, focus on the same period.</p></li>
+</ol>
+</div>
+<div id="preliminary-results" class="section level1">
+<h1>Preliminary Results:</h1>
+<p>Please see Step 4.</p>
+</div>
+<div id="code" class="section level1">
+<h1>Code:</h1>
+<div id="step1" class="section level3">
+<h3>Step1</h3>
+<ul>
+<li>Read in data.</li>
+</ul>
+</div>
+<div id="step2" class="section level3">
+<h3>Step2</h3>
+<ul>
+<li>Check the dimensions, headers, footers, and the trend of the social distance.</li>
+<li>For the sake of presentation friendliness, we only show 8 lines for the first and last part of the data.</li>
+<li>For the trends plot, I only show the four states for 50 days. They have very similar fluctuating trends in social distancing.</li>
+<li>There are 51 rows and 275 columns in the social distance index data set.</li>
+<li>The date is updated from Jan/01/2020 to Sep/28/2020.</li>
+</ul>
+<p><img src="index_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<ul>
+<li>For the sake of presentation friendliness, I only show 15 lines for the first and the last part.</li>
+<li>For the total US confirmed cases, I only show the same four states above for 10 days. We also can see the same trend in these four countries, but Alaska have little confirmed case.</li>
+<li>There are 51 rows and 272 columns in the total US confirmed cases data set.</li>
+<li>The date is updated from Jan/21/2020 to Oct/06/2020.</li>
+</ul>
+</div>
+<div id="step3" class="section level3">
+<h3>Step3</h3>
+<ul>
+<li>Delete the extra columns. I want to see the data of the same period in both data set. So I keep the period from Jan/21/2020 to Sep/28/2020.</li>
+</ul>
+<p><img src="index_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+</div>
+<div id="step4" class="section level3">
+<h3>Step4</h3>
+<ul>
+<li><p>Get the statistic of the social distance index (Jan/21/2020 ~ Sep/28/2020).</p></li>
+<li><p>The kable format table contains the mean information of the first 6 states:“Alabama”, “Alaska”, “Arizona”, “Arkansas”, “California”, “Colorado”.</p></li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th align="left">statistic information</th>
+<th align="left">Alabama</th>
+<th align="left">Alaska</th>
+<th align="left">Arizona</th>
+<th align="left">Arkansas</th>
+<th align="left">California</th>
+<th align="left">Colorado</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">mean</td>
+<td align="left">26.83</td>
+<td align="left">20.82</td>
+<td align="left">33.46</td>
+<td align="left">25.37</td>
+<td align="left">38.9</td>
+<td align="left">31.32</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>We can see the range of social distance doesn’t fluctuate much in these states.</li>
+</ul>
+</div>
+<div id="step5" class="section level3">
+<h3>Step5</h3>
+<ul>
+<li>Check the missing values in both data set.</li>
+</ul>
+<pre><code>## [1] 0</code></pre>
+<pre><code>## [1] 0</code></pre>
+<ul>
+<li>It shows that there is no any missing values in both data set.</li>
+</ul>
+</div>
+<div id="step6" class="section level3">
+<h3>Step6</h3>
+<ul>
+<li>Draw the barchart of total US confirmed cases on Sep/28/2020.</li>
+</ul>
+<p><img src="index_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+</div>
+<div id="step7" class="section level3">
+<h3>Step7</h3>
+<ul>
+<li>Find which states have the total confirmed cases on Sep/28/2020 which are over 200,000.</li>
+</ul>
+<p><img src="index_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+</div>
+<div id="step8" class="section level3">
+<h3>Step8</h3>
+<ul>
+<li>Compare the social distance index with the total confirmed cases in the states which are over 200,000.</li>
+</ul>
+<p><img src="index_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
+<ul>
+<li>From the following biaxial chart, in the 9 states with more than 200,000 confirmed infected people. If we set the social distance lager than 35 as the long social distance Here are 4 states follow patterns are shown: those with fewer infected people have a longer social distance, such as New York and New Jersey; the number of infected people is higher in states with shorter social distance, such as California, Florida and Texas.</li>
+</ul>
+</div>
+<div id="step9" class="section level3">
+<h3>Step9</h3>
+<ul>
+<li>Plot the mean values of social distance index of the 9 states on the map.</li>
+</ul>
+<p><img src="index_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
+<ul>
+<li>The states in grey color are those who have total confirmed cases lower than 200,000, which I did not calculate the mean values.</li>
+<li>The states in blue color are those who have total confirmed cases over than 200,000, which I have calculated the mean values before. The dark blue indicates the higher mean of social distance index, the light blue indicates the lower mean of social distance index.</li>
+</ul>
+</div>
+<div id="step10" class="section level3">
+<h3>Step10</h3>
+<ul>
+<li>Find whether the variable of total confirmed cases and the variable of mean social distance are related.</li>
+</ul>
+<pre><code>## [1] -0.09747817</code></pre>
+<ul>
+<li>The correlation coefficient is -0.097 which is very close to 0, so we can find that these two variables are not related.</li>
+</ul>
+</div>
+</div>
+<div id="conclusions" class="section level1">
+<h1>Conclusions:</h1>
+<ol style="list-style-type: decimal">
+<li>Social distance is not an absolute influence on the number of people diagnosed.</li>
+<li>The range of social distance doesn’t fluctuate much in these states.</li>
+<li>The total confirmed cases and the mean social distance are not related.</li>
+<li>Although this conclusion is surprising me, I think we still need to focus on keeping social distance, because New York and New Jersey are two states have high population density, but with quite low confirmed cases numbers, we can also see that the social distance indexes of these two states are the highest two numbers in the plot. Maybe keeping a social distance is more efficient in big cities than in rural areas. Therefore, as the states with the same high population density, California and Texas should keep social distance and see if that can slow down the spread of Covid-19.</li>
+</ol>
+</div>
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

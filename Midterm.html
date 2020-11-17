@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+<meta name="author" content="Ruowen Wang" />
+
+
+<title>Midterm</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">PM566 Final Project</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="https://github.com/USCbiostats/PM566">
+    <span class="fa fa-github fa-lg"></span>
+     
+  </a>
+</li>
+<li>
+  <a href="https://elastic-khorana-70231e.netlify.app/">PM566 Home</a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">Midterm</h1>
+<h4 class="author">Ruowen Wang</h4>
+<h4 class="date">10/8/2020</h4>
+
+</div>
+
+
+<div id="introduction" class="section level2 tabset">
+<h2>Introduction:</h2>
+<div id="introduction-1" class="section level3">
+<h3>Introduction:</h3>
+<ol style="list-style-type: decimal">
+<li><p>Question: I am trying to find the association between the social distance index with the incidence rate of COVID-19. To check whether keeping social distance is an effective way to slow down the spread of COVID-19.</p></li>
+<li><p>Explanation: The social distance index is an integer from 0~100 that represents the extent residents and visitors are practicing social distancing. “0” indicates no social distancing is observed in the community, while “100” indicates all residents are staying at home and no visitors are entering the county.Calculated by MTI.</p></li>
+</ol>
+</div>
+<div id="methods" class="section level3">
+<h3>Methods:</h3>
+<ol style="list-style-type: decimal">
+<li><p>Data source: Social distance index: <a href="https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/ZAKKCE" class="uri">https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/ZAKKCE</a> Total US confirmed cases: <a href="https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/HIDLTK" class="uri">https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/HIDLTK</a></p></li>
+<li><p>I find out the number of columns and rows of both data set. Then I delete the extra columns and rows, focus on the same period.</p></li>
+</ol>
+</div>
+<div id="preliminary-results" class="section level3">
+<h3>Preliminary Results:</h3>
+<p>Please see Step 4.</p>
+</div>
+<div id="code" class="section level3">
+<h3>Code:</h3>
+<pre><code>## ── Attaching packages ────────────────────────────────────────────────────────────────────────── tidyverse 1.3.0 ──</code></pre>
+<pre><code>## ✓ ggplot2 3.3.2     ✓ purrr   0.3.4
+## ✓ tibble  3.0.3     ✓ dplyr   1.0.1
+## ✓ tidyr   1.1.1     ✓ stringr 1.4.0
+## ✓ readr   1.3.1     ✓ forcats 0.5.0</code></pre>
+<pre><code>## ── Conflicts ───────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
+## x dplyr::between()   masks data.table::between()
+## x dplyr::filter()    masks stats::filter()
+## x dplyr::first()     masks data.table::first()
+## x dplyr::lag()       masks stats::lag()
+## x dplyr::last()      masks data.table::last()
+## x purrr::transpose() masks data.table::transpose()</code></pre>
+<pre><code>## 
+## Attaching package: &#39;scales&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:purrr&#39;:
+## 
+##     discard</code></pre>
+<pre><code>## The following object is masked from &#39;package:readr&#39;:
+## 
+##     col_factor</code></pre>
+</div>
+<div id="step1-read-in-data." class="section level3">
+<h3>Step1: Read in data.</h3>
+</div>
+<div id="step2-check-the-dimensions-headers-footers-and-the-trend-of-the-social-distance." class="section level3">
+<h3>Step2: Check the dimensions, headers, footers, and the trend of the social distance.</h3>
+<ul>
+<li>For the sake of presentation friendliness, we only show 8 lines for the first and last part of the data.</li>
+<li>For the trends plot, I only show the four states for 50 days. They have very similar fluctuating trends in social distancing.</li>
+<li>There are 51 rows and 275 columns in the social distance index data set.</li>
+<li>The date is updated from Jan/01/2020 to Sep/28/2020.</li>
+</ul>
+<pre><code>## [1]  51 275</code></pre>
+<pre><code>##    V1 STATE       NAME 01/01/2020 01/02/2020 01/03/2020 01/04/2020 01/05/2020
+## 1:  0     1    Alabama         52         27         17         28         41
+## 2:  1     2     Alaska         54         23         20         37         47
+## 3:  2     4    Arizona         46         19         16         27         39
+## 4:  3     5   Arkansas         49         23         14         28         40
+## 5:  4     6 California         50         22         18         31         43
+## 6:  5     8   Colorado         49         16         15         25         40</code></pre>
+<pre><code>##    09/21/2020 09/22/2020 09/23/2020 09/24/2020 09/25/2020 09/26/2020 09/27/2020
+## 1:         22         50         45         44         36         25         28
+## 2:         32         31         26         25         24         29         34
+## 3:         32         37         35         33         30         31         36
+## 4:         20         32         28         26         21         25         28
+## 5:         22         20         18         19         17         25         29
+## 6:         20         30         26         26         23         24         30
+##    09/28/2020
+## 1:         25
+## 2:         33
+## 3:         33
+## 4:         21
+## 5:         27
+## 6:         20</code></pre>
+<p><img src="Midterm_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<ul>
+<li>For the sake of presentation friendliness, I only show 15 lines for the first and the last part.</li>
+<li>For the total US confirmed cases, I only show the same four states above for 10 days. We also can see the same trend in these four countries, but Alaska have little confirmed case.</li>
+<li>There are 51 rows and 272 columns in the total US confirmed cases data set.</li>
+<li>The date is updated from Jan/21/2020 to Oct/06/2020.</li>
+</ul>
+<pre><code>## [1]  51 272</code></pre>
+<pre><code>##    fips       NAME    POP70   HHD70    POP80   HHD80    POP90    HHD90    POP00
+## 1:    1    Alabama  3434507 1031615  3886040 1340563  4040576  1506778  4447059
+## 2:    2     Alaska   225211   61547   393155  130004   549808   188909   626932
+## 3:    4    Arizona  1768275  538809  2705322  953006  3663266  1368775  5130674
+## 4:    5   Arkansas  1901082  608500  2253450  805730  2350107   891049  2673393
+## 5:    6 California 19838084 6570174 23575384 8624938 29724503 10377409 33871650
+## 6:    8   Colorado  2181196  684818  2828761 1042987  3278284  1276564  4284074
+##       HHD00    POP10    HHD10 2020-01-21 2020-01-22 2020-01-23
+## 1:  1737086  4779736  1883791          0          0          0
+## 2:   221599   710231   258058          0          0          0
+## 3:  1901349  6392017  2380990          0          0          0
+## 4:  1042696  2915918  1147084          0          0          0
+## 5: 11502847 37253956 12577498          0          0          0
+## 6:  1652051  5029196  1972868          0          0          0</code></pre>
+<pre><code>##    2020-09-22 2020-09-23 2020-09-24 2020-09-25 2020-09-26 2020-09-27 2020-09-28
+## 1:       1721       1722       1724       1731       1739       1742       1745
+## 2:     142010     142590     143492     144433     145408     146144     146593
+## 3:      87233      88042      88597      89149      89514      89822      90596
+## 4:      14384      14504      14706      14953      15158      15348      15512
+## 5:     110393     112276     114743     117355     120249     122498     124320
+## 6:       5016       5169       5305       5420       5465       5633       5754
+##    2020-09-29 2020-09-30 2020-10-01 2020-10-02 2020-10-03 2020-10-04 2020-10-05
+## 1:       1749       1752       1755       1768       1778       1785       1817
+## 2:     147516     148271     148721     149687     150803     151870     152557
+## 3:      91011      91560      92166      92727      93160      93527      94202
+## 4:      15692      15848      16024      16307      16468      16628      16742
+## 5:     126744     129172     132176     134996     138018     139941     141780
+## 6:       5821       5948       6083       6214       6365       6504       6629
+##    2020-10-06
+## 1:       1821
+## 2:     153182
+## 3:      94694
+## 4:      16936
+## 5:     143886
+## 6:       6770</code></pre>
+</div>
+<div id="step3-delete-the-extra-columns.-i-want-to-see-the-data-of-the-same-period-in-both-data-set.-so-i-keep-the-period-from-jan212020-to-sep282020." class="section level3">
+<h3>Step3: Delete the extra columns. I want to see the data of the same period in both data set. So I keep the period from Jan/21/2020 to Sep/28/2020.</h3>
+<pre><code>## [1]  51 254</code></pre>
+<pre><code>## [1]  51 254</code></pre>
+<pre><code>## Warning in brewer.pal(n = 15, name = &quot;RdBu&quot;): n too large, allowed maximum for palette RdBu is 11
+## Returning the palette you asked for with that many colors</code></pre>
+<p><img src="Midterm_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+</div>
+<div id="step4-get-the-statistic-about-the-dataframe-sid1." class="section level3">
+<h3>Step4: Get the statistic about the dataframe sid1.</h3>
+<pre><code>##     Alabama          Alaska         Arizona         Arkansas       California  
+##  Min.   :10.00   Min.   :15.00   Min.   :13.00   Min.   :11.00   Min.   :13.0  
+##  1st Qu.:19.00   1st Qu.:20.75   1st Qu.:28.00   1st Qu.:17.75   1st Qu.:33.0  
+##  Median :24.50   Median :27.00   Median :33.50   Median :22.50   Median :38.0  
+##  Mean   :26.83   Mean   :30.82   Mean   :33.46   Mean   :25.37   Mean   :38.9  
+##  3rd Qu.:33.00   3rd Qu.:39.00   3rd Qu.:41.00   3rd Qu.:31.25   3rd Qu.:47.0  
+##  Max.   :75.00   Max.   :73.00   Max.   :70.00   Max.   :68.00   Max.   :78.0  
+##     Colorado      Connecticut      Delaware     District of Columbia
+##  Min.   :12.00   Min.   :13.0   Min.   :13.00   Min.   :20.00       
+##  1st Qu.:22.75   1st Qu.:25.0   1st Qu.:24.00   1st Qu.:52.50       
+##  Median :28.50   Median :33.0   Median :30.00   Median :60.00       
+##  Mean   :31.32   Mean   :35.3   Mean   :33.08   Mean   :55.17       
+##  3rd Qu.:38.25   3rd Qu.:44.0   3rd Qu.:41.00   3rd Qu.:64.25       
+##  Max.   :80.00   Max.   :81.0   Max.   :76.00   Max.   :81.00       
+##     Florida         Georgia          Hawaii          Idaho      
+##  Min.   :12.00   Min.   :12.00   Min.   :13.00   Min.   :13.00  
+##  1st Qu.:28.00   1st Qu.:22.00   1st Qu.:35.00   1st Qu.:19.00  
+##  Median :35.00   Median :29.00   Median :46.00   Median :23.00  
+##  Mean   :35.94   Mean   :30.75   Mean   :44.54   Mean   :25.91  
+##  3rd Qu.:44.00   3rd Qu.:38.00   3rd Qu.:56.00   3rd Qu.:31.00  
+##  Max.   :78.00   Max.   :78.00   Max.   :83.00   Max.   :67.00  
+##     Illinois        Indiana           Iowa           Kansas     
+##  Min.   :14.00   Min.   :13.00   Min.   :12.00   Min.   :12.00  
+##  1st Qu.:23.00   1st Qu.:19.00   1st Qu.:19.00   1st Qu.:21.00  
+##  Median :28.00   Median :23.00   Median :23.00   Median :25.00  
+##  Mean   :32.81   Mean   :27.39   Mean   :26.56   Mean   :28.72  
+##  3rd Qu.:41.00   3rd Qu.:33.00   3rd Qu.:32.25   3rd Qu.:35.25  
+##  Max.   :79.00   Max.   :73.00   Max.   :77.00   Max.   :78.00  
+##     Kentucky       Louisiana         Maine          Maryland    
+##  Min.   :13.00   Min.   :11.00   Min.   :13.00   Min.   :12.00  
+##  1st Qu.:19.00   1st Qu.:22.75   1st Qu.:19.00   1st Qu.:32.00  
+##  Median :24.00   Median :30.00   Median :24.00   Median :38.00  
+##  Mean   :27.58   Mean   :32.11   Mean   :27.21   Mean   :38.87  
+##  3rd Qu.:34.00   3rd Qu.:41.00   3rd Qu.:33.00   3rd Qu.:47.00  
+##  Max.   :73.00   Max.   :77.00   Max.   :69.00   Max.   :80.00  
+##  Massachusetts      Michigan       Minnesota      Mississippi   
+##  Min.   :14.00   Min.   :13.00   Min.   :12.00   Min.   :10.00  
+##  1st Qu.:27.00   1st Qu.:22.00   1st Qu.:21.00   1st Qu.:18.00  
+##  Median :34.00   Median :28.00   Median :26.50   Median :24.00  
+##  Mean   :37.54   Mean   :33.13   Mean   :30.02   Mean   :26.43  
+##  3rd Qu.:48.25   3rd Qu.:40.25   3rd Qu.:37.25   3rd Qu.:33.00  
+##  Max.   :81.00   Max.   :80.00   Max.   :82.00   Max.   :75.00  
+##     Missouri        Montana         Nebraska         Nevada     
+##  Min.   :12.00   Min.   :14.00   Min.   :12.00   Min.   :14.00  
+##  1st Qu.:19.75   1st Qu.:19.00   1st Qu.:20.00   1st Qu.:28.00  
+##  Median :23.00   Median :23.50   Median :23.00   Median :34.00  
+##  Mean   :27.39   Mean   :26.27   Mean   :27.23   Mean   :35.73  
+##  3rd Qu.:33.25   3rd Qu.:31.00   3rd Qu.:34.00   3rd Qu.:43.00  
+##  Max.   :74.00   Max.   :68.00   Max.   :80.00   Max.   :74.00  
+##  New Hampshire     New Jersey      New Mexico       New York    
+##  Min.   :12.00   Min.   :14.00   Min.   :12.00   Min.   :17.00  
+##  1st Qu.:19.00   1st Qu.:29.00   1st Qu.:23.75   1st Qu.:35.00  
+##  Median :25.00   Median :39.00   Median :29.00   Median :43.00  
+##  Mean   :28.60   Mean   :40.55   Mean   :30.07   Mean   :43.92  
+##  3rd Qu.:35.25   3rd Qu.:51.25   3rd Qu.:37.00   3rd Qu.:53.25  
+##  Max.   :77.00   Max.   :83.00   Max.   :68.00   Max.   :82.00  
+##  North Carolina   North Dakota        Ohio          Oklahoma    
+##  Min.   :11.00   Min.   :13.00   Min.   :13.00   Min.   :11.00  
+##  1st Qu.:21.00   1st Qu.:18.00   1st Qu.:21.00   1st Qu.:18.00  
+##  Median :27.00   Median :21.50   Median :25.50   Median :22.00  
+##  Mean   :29.05   Mean   :25.93   Mean   :29.55   Mean   :25.17  
+##  3rd Qu.:36.00   3rd Qu.:31.00   3rd Qu.:37.00   3rd Qu.:31.00  
+##  Max.   :73.00   Max.   :75.00   Max.   :75.00   Max.   :70.00  
+##      Oregon       Pennsylvania    Rhode Island  South Carolina   South Dakota  
+##  Min.   :14.00   Min.   :14.00   Min.   :13.0   Min.   :11.00   Min.   :12.00  
+##  1st Qu.:24.00   1st Qu.:25.00   1st Qu.:22.0   1st Qu.:20.00   1st Qu.:17.00  
+##  Median :31.00   Median :31.00   Median :28.0   Median :25.00   Median :21.00  
+##  Mean   :33.15   Mean   :34.28   Mean   :32.7   Mean   :27.71   Mean   :24.42  
+##  3rd Qu.:41.00   3rd Qu.:42.00   3rd Qu.:41.0   3rd Qu.:34.00   3rd Qu.:29.00  
+##  Max.   :71.00   Max.   :77.00   Max.   :78.0   Max.   :74.00   Max.   :77.00  
+##    Tennessee         Texas           Utah          Vermont         Virginia    
+##  Min.   :12.00   Min.   :11.0   Min.   :12.00   Min.   :12.00   Min.   :12.00  
+##  1st Qu.:18.00   1st Qu.:24.0   1st Qu.:21.00   1st Qu.:21.00   1st Qu.:27.00  
+##  Median :23.00   Median :31.0   Median :26.00   Median :26.00   Median :33.00  
+##  Mean   :26.23   Mean   :31.8   Mean   :29.53   Mean   :30.37   Mean   :34.37  
+##  3rd Qu.:32.00   3rd Qu.:39.0   3rd Qu.:38.25   3rd Qu.:39.00   3rd Qu.:43.00  
+##  Max.   :76.00   Max.   :73.0   Max.   :74.00   Max.   :74.00   Max.   :73.00  
+##    Washington    West Virginia     Wisconsin        Wyoming     
+##  Min.   :13.00   Min.   :14.00   Min.   :12.00   Min.   :14.00  
+##  1st Qu.:26.00   1st Qu.:20.00   1st Qu.:19.00   1st Qu.:18.00  
+##  Median :32.00   Median :25.00   Median :23.50   Median :21.00  
+##  Mean   :34.57   Mean   :28.48   Mean   :27.84   Mean   :24.23  
+##  3rd Qu.:42.00   3rd Qu.:34.25   3rd Qu.:33.25   3rd Qu.:29.00  
+##  Max.   :74.00   Max.   :70.00   Max.   :76.00   Max.   :69.00</code></pre>
+<ul>
+<li>I also to bulid the kable format table for the mean information of the first 6 states:“Alabama”, “Alaska”, “Arizona”, “Arkansas”, “California”, “Colorado”.</li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th align="left">statistic information</th>
+<th align="left">Alabama</th>
+<th align="left">Alaska</th>
+<th align="left">Arizona</th>
+<th align="left">Arkansas</th>
+<th align="left">California</th>
+<th align="left">Colorado</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">mean</td>
+<td align="left">26.83</td>
+<td align="left">20.82</td>
+<td align="left">33.46</td>
+<td align="left">25.37</td>
+<td align="left">38.9</td>
+<td align="left">31.32</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>We can see the range of social distance doesn’t fluctuate much in these states.</li>
+</ul>
+</div>
+<div id="step5-check-the-missing-values-in-both-data-set." class="section level3">
+<h3>Step5: Check the missing values in both data set.</h3>
+<pre><code>## [1] 0</code></pre>
+<pre><code>## [1] 0</code></pre>
+</div>
+<div id="step6-draw-the-barchart-of-total-us-confirmed-cases-on-sep282020." class="section level3">
+<h3>Step6: Draw the barchart of total US confirmed cases on Sep/28/2020.</h3>
+<p><img src="Midterm_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
+</div>
+<div id="step7-find-which-states-have-the-total-confirmed-cases-on-sep282020-which-are-over-200000." class="section level3">
+<h3>Step7: Find which states have the total confirmed cases on Sep/28/2020 which are over 200,000.</h3>
+<p><img src="Midterm_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
+</div>
+<div id="step8-compare-the-social-distance-index-with-the-total-confirmed-cases-in-the-states-which-are-over-200000." class="section level3">
+<h3>Step8: Compare the social distance index with the total confirmed cases in the states which are over 200,000.</h3>
+<p><img src="Midterm_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
+<ul>
+<li>From the following biaxial chart, in the 9 states with more than 200,000 confirmed infected people. If we set the social distance lager than 35 as the long social distance Here are 4 states follow patterns are shown: those with fewer infected people have a longer social distance, such as New York and New Jersey; the number of infected people is higher in states with shorter social distance, such as California, Florida and Texas.</li>
+</ul>
+</div>
+<div id="step9-plot-the-mean-values-of-social-distance-index-of-the-9-states-on-the-map." class="section level3">
+<h3>Step9: Plot the mean values of social distance index of the 9 states on the map.</h3>
+<p><img src="Midterm_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
+<ul>
+<li>The states in grey color are those who have total confirmed cases lower than 200,000, which I did not calculate the mean values.</li>
+<li>The states in blue color are those who have total confirmed cases over than 200,000, which I have calculated the mean values before. The dark blue indicates the higher mean of social distance index, the light blue indicates the lower mean of social distance index.</li>
+</ul>
+</div>
+<div id="step10-find-whether-the-variable-of-total-confirmed-cases-and-the-variable-of-mean-social-distance-are-related." class="section level3">
+<h3>Step10: Find whether the variable of total confirmed cases and the variable of mean social distance are related.</h3>
+<pre><code>## [1] -0.09747817</code></pre>
+<ul>
+<li>The correlation coefficient is -0.097 which is very close to 0, so we can find that these two variables are not related.</li>
+</ul>
+</div>
+<div id="conclusions" class="section level3">
+<h3>Conclusions:</h3>
+<ol style="list-style-type: decimal">
+<li>Social distance is not an absolute influence on the number of people diagnosed.</li>
+<li>The range of social distance doesn’t fluctuate much in these states.</li>
+<li>The total confirmed cases and the mean social distance are not related.</li>
+<li>Although this conclusion is surprising me, I think we still need to focus on keeping social distance, because New York and New Jersey are two states have high population density, but with quite low confirmed cases numbers, we can also see that the social distance indexes of these two states are the highest two numbers in the plot. Maybe keeping a social distance is more efficient in big cities than in rural areas. Therefore, as the states with the same high population density, California and Texas should keep social distance and see if that can slow down the spread of Covid-19.</li>
+</ol>
+</div>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
