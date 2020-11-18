@@ -14,9 +14,6 @@ output:
 
 2. Explanation: The social distance index is an integer from 0~100 that represents the extent residents and visitors are practicing social distancing. "0" indicates no social distancing is observed in the community, while "100" indicates all residents are staying at home and no visitors are entering the county.Calculated by MTI.
 
-3. See the website for details of the social distance index's calculation. https://data.covid.umd.edu/methods/index.html
-
-
 
 # Methods:
 
@@ -26,6 +23,7 @@ Total US confirmed cases: https://dataverse.harvard.edu/dataset.xhtml?persistent
 
 2. Firstly, I check the number of columns and rows of both data sets. Then I delete the extra columns and rows, focus on the same period.
 
+3. See the website for details of the social distance index's calculation. https://data.covid.umd.edu/methods/index.html
 
 # Preliminary Results: 
 
@@ -44,6 +42,7 @@ library(knitr)
 library(usmap)
 library(scales)
 library(RColorBrewer)
+library(plotly)
 ```
 
 ### Step1
@@ -58,28 +57,8 @@ totcases <- data.table::fread("/Users/christina/Desktop/us_state_confirmed_case.
 ### Step2
 
 - Check the dimensions, headers, footers, and the trend of the social distance.
-- For the sake of presentation friendliness, we only show 8 lines for the first and last part of the data.
-- For the trends plot, I only show the four states for 50 days. They have very similar fluctuating trends in social distancing.
-- There are 51 rows and 275 columns in the social distance index data set. 
-- The date is updated from Jan/01/2020 to Sep/28/2020.
-
-```{r echo=FALSE, message=FALSE, warning=FALSE}
-library(ggplot2)
-library(scales)
-data1 = t(as.matrix(sdi[,3:275]))
-date = colnames(sdi)[4:275]
-rownames(data1) <- NULL
-colnames(data1) = data1[1,]
-data1 = as.data.frame(data1)[2:273,]
-data1$date = as.Date(date,format ("%m/%d/%Y"))
-data1 = data1[1:50,]
-ggplot(data1, aes(x=date)) + geom_line(aes(y=Alabama,group = 1),color="red")+ geom_line(aes(y=Alaska,group = 1),color="green")+geom_line(aes(y=Arizona,group = 1),color="orange")+geom_line(aes(y=Arkansas,group = 1),color="blue") +scale_y_discrete('Social distance')+scale_x_date(labels=date_format("%Y-%m"))
-```
-
-- For the sake of presentation friendliness, I only show 15 lines for the first and the last part.
-- For the total US confirmed cases, I only show the same four states above for 10 days. We also can see the same trend in these four countries, but Alaska have little confirmed case.
-- There are 51 rows and 272 columns in the total US confirmed cases data set. 
-- The date is updated from Jan/21/2020 to Oct/06/2020.
+- For the social distance index, the date is updated from Jan/01/2020 to Sep/28/2020.
+- For the total US confirmed cases, the date is updated from Jan/21/2020 to Oct/06/2020.
 
 ### Step3
 
@@ -92,19 +71,6 @@ totcases1<- totcases[ ,-c(265:272)]
 totcases1<- totcases1[ ,-c(3:12)]
 ```
 
-```{r echo=FALSE, message=FALSE, warning=FALSE}
-library(RColorBrewer)
-library(scales)
-coll = brewer.pal(n = 15, name = "RdBu")
-data2 = t(as.matrix(totcases[,1:272]))
-date = colnames(totcases)[13:272]
-rownames(data2) <- NULL
-colnames(data2) = data2[2,]
-data2 = as.data.frame(data2)[13:272,]
-data2$date = as.Date(date)
-data2 = data2[51:60,]
-ggplot(data2, aes(x=date)) + geom_line(aes(y=Alabama,group = 1),color=coll[1])+ geom_line(aes(y=Alaska,group = 1),color=coll[2])+geom_line(aes(y=Arizona,group = 1),color=coll[4])+geom_line(aes(y=Arkansas,group = 1),color=coll[9]) +scale_y_discrete('Total US confirmed cases')+scale_x_date(labels=date_format("%Y-%m-%d"))
-```
 
 ### Step4  
 
@@ -134,7 +100,7 @@ kable(a.frame)
 
 ### Step5 
 
-- Check the missing values in both data set.
+- Check the missing values in both data sets.
 
 ```{r echo=FALSE, message=FALSE, warning=FALSE}
 sum(is.na(sdi1))
@@ -194,10 +160,12 @@ axis(4,col="red",col.ticks="red",col.axis="red")
 
 ```{r echo=FALSE, message=FALSE, warning=FALSE}
 library(usmap)
+library(plotly)
 sdistatem = as.data.frame(sdistatez)
 names(sdistatem)[2] <- "state"
-plot_usmap('states', data =sdistatem, values ='meandis')+
+step9 <- plot_usmap('states', data =sdistatem, values ='meandis')+
 scale_fill_continuous(low = "light blue", high = "dark blue", name = "Mean values of SDI", label = scales::comma) + labs(title = "The mean values of social distance index of the 9 states", subtitle = "The 9 states have the total confirmed cases on Sep/28/2020 which are over 200,000.") + theme(legend.position = "right")
+ggplotly(step9)
 ```
 
 - The states in grey color are those who have total confirmed cases lower than 200,000, which I did not calculate the mean values.
