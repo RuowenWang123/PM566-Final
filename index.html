@@ -16,7 +16,7 @@
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
@@ -382,12 +382,12 @@ div.tocify {
 </div>
 
 
-<p>This is my PM566 Final Project website.</p>
 <div id="introduction" class="section level1">
 <h1>Introduction:</h1>
 <ol style="list-style-type: decimal">
 <li><p>Question: I am trying to find the association between the social distance index with the incidence rate of COVID-19. To check whether keeping social distance is an effective way to slow down the spread of COVID-19.</p></li>
 <li><p>Explanation: The social distance index is an integer from 0~100 that represents the extent residents and visitors are practicing social distancing. “0” indicates no social distancing is observed in the community, while “100” indicates all residents are staying at home and no visitors are entering the county.Calculated by MTI.</p></li>
+<li><p>See the website for details of the social distance index’s calculation. <a href="https://data.covid.umd.edu/methods/index.html" class="uri">https://data.covid.umd.edu/methods/index.html</a></p></li>
 </ol>
 </div>
 <div id="methods" class="section level1">
@@ -518,9 +518,19 @@ div.tocify {
 <ul>
 <li>Find whether the variable of total confirmed cases and the variable of mean social distance are related.</li>
 </ul>
-<pre><code>## [1] -0.09747817</code></pre>
+<pre><code>## 
+##  Pearson&#39;s product-moment correlation
+## 
+## data:  meandisz and totalz
+## t = -0.68561, df = 49, p-value = 0.4962
+## alternative hypothesis: true correlation is not equal to 0
+## 95 percent confidence interval:
+##  -0.3633023  0.1830221
+## sample estimates:
+##         cor 
+## -0.09747817</code></pre>
 <ul>
-<li>The correlation coefficient is -0.097 which is very close to 0, so we can find that these two variables are not related.</li>
+<li>The correlation coefficient is -0.097 which is very close to 0, the p-value is 0.4962 which means it is not statistically significant, so we can find that these two variables are not related, the association between these two variables is not significant either.</li>
 </ul>
 </div>
 </div>
@@ -529,7 +539,7 @@ div.tocify {
 <ol style="list-style-type: decimal">
 <li>Social distance is not an absolute influence on the number of people diagnosed.</li>
 <li>The range of social distance doesn’t fluctuate much in these states.</li>
-<li>The total confirmed cases and the mean social distance are not related.</li>
+<li>The total confirmed cases and the mean social distance are not related. The association between these two variables is not statistically significant. The reason may be due to the accuracy of the measurement of the social distance index. Although they use many different data sources and the calculation after multi-level weighting, they still can’t guarantee the accuracy of the estimated index.</li>
 <li>Although this conclusion is surprising me, I think we still need to focus on keeping social distance, because New York and New Jersey are two states have high population density, but with quite low confirmed cases numbers, we can also see that the social distance indexes of these two states are the highest two numbers in the plot. Maybe keeping a social distance is more efficient in big cities than in rural areas. Therefore, as the states with the same high population density, California and Texas should keep social distance and see if that can slow down the spread of Covid-19.</li>
 </ol>
 </div>
