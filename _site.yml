@@ -6,7 +6,7 @@ navbar:
     - text: "Home"
       href: index.html
     - text: "Download Report"
-      href: https://ruowenwang123.github.io/PM566-Final/
+      href: PM566 Final Report.pdf
     - text: "README"
       href: README.md
     - text: "Data"
